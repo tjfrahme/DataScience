@@ -1,0 +1,3 @@
+writing to a file is great
+Here is another line
+Appending latter
