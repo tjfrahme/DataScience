@@ -11,7 +11,7 @@ import gspread_dataframe as gd
 # gets token needed for authentication
 # https://developers.marketo.com/rest-api/authentication/
 def get_token():
-    req_token = requests.get('https://746-ROU-361.mktorest.com/identity/oauth/token?grant_type=client_credentials&client_id=a9d0dd32-65ba-46b3-bd55-da0c0f9472a3&client_secret=LHvOm1xUDb4IeZXu5gpwYl9VDOJocR2L')
+    req_token = requests.get('https://HIDDEN.mktorest.com/identity/oauth/token?grant_type=client_credentials&client_id=HIDDEN&client_secret=HIDDEN')
     token = req_token.json()['access_token']
     return token
 
@@ -21,7 +21,7 @@ def api_call (api_request):
     tokencall = f"Bearer {get_token()}"
     headers = {'Authorization': tokencall}
 
-    base_url= 'https://746-ROU-361.mktorest.com'
+    base_url= 'https://HIDDEN.mktorest.com'
     
     #api request should be in form of --->   api_call('/rest/asset/v1/programs.json')
     
@@ -34,7 +34,7 @@ def api_post_call(api_request, data):
     bearer = f"Bearer {get_token()}"
     headers = {'Authorization': bearer}
 
-    base_url= 'https://746-ROU-361.mktorest.com'
+    base_url= 'https://HIDDEN.mktorest.com'
     
     #api request should be in form of --->   api_call('/rest/asset/v1/programs.json')
     
@@ -135,7 +135,7 @@ def get_data(job_id):
     tokencall = f"Bearer {get_token()}"
     headers = {'Authorization': tokencall}
     
-    base_url= f"https://746-ROU-361.mktorest.com/bulk/v1/program/members/export/{job_id}/file.json?"
+    base_url= f"https://HIDDEN.mktorest.com/bulk/v1/program/members/export/{job_id}/file.json?"
     
         
     for i in range(10):
@@ -193,9 +193,7 @@ def run_program_data(programId):
 
 def main_program():
     
-    # list_programs = get_nurture_programsid()   #['1351', '1594', '1361', '1742', '1346', '1600']
-
-    list_programs = ['1351']
+    list_programs = get_nurture_programsid()   #['1351', '1594', '1361', '1742', '1346', '1600']
     
     all_df = pd.DataFrame(columns = get_payload(1351)['fields'])  #creates blank df with column headers
 
